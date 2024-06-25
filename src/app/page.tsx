@@ -3,6 +3,8 @@ import Link from "next/link";
 import { CreatePost } from "~/app/_components/create-post";
 import { getServerAuthSession } from "~/server/auth";
 import { api } from "~/trpc/server";
+import SignUpForm from "../app/_components/form/SignUpForm";
+
 
 export default async function Home() {
   const hello = await api.post.hello({ text: "from tRPC" });
@@ -24,7 +26,7 @@ export default async function Home() {
             <div className="text-lg">
               Just the basics - Everything you need to know to set up your
               database and authentication.
-            </div>
+           </div>
           </Link>
           <Link
             className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
@@ -37,6 +39,8 @@ export default async function Home() {
               deploy it.
             </div>
           </Link>
+        </div>
+        <div>           <SignUpForm/>
         </div>
         <div className="flex flex-col items-center gap-2">
           <p className="text-2xl text-white">
@@ -54,8 +58,8 @@ export default async function Home() {
               {session ? "Sign out" : "Sign in"}
             </Link>
           </div>
+        
         </div>
-
         <CrudShowcase />
       </div>
     </main>

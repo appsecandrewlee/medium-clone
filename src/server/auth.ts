@@ -58,13 +58,24 @@ export const authOptions: NextAuthOptions = {
       // e.g. domain, username, password, 2FA token, etc.
       // You can pass any HTML attribute to the <input> tag through the object.
       credentials: {
-        email: {},
-        password: {}
+        email:{label: "Email", type:"email"},
+        password: { label: "Password", type: "password" }
       },
-      async authorize(credentials, req) {
+      async authorize(credentials) {
         // Add logic here to look up the user from the credentials supplied
-        const user = { id: "1", name: "J Smith", email: "jsmith@example.com" }
+        if (!credentials?.email || !credentials.password){
+          return null; 
+        }
   
+        const existingUser = await db.user.findUnique({
+          where: {email: credentials.email}
+        });
+        if (!existingUser){
+          return null; 
+        }
+
+        const user = { id: 1, name: 'J Smith', email: 'jsmith@example.com' }
+    
         if (user) {
           // Any object returned will be saved in `user` property of the JWT
           return user
