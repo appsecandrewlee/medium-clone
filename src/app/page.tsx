@@ -3,7 +3,6 @@ import Link from "next/link";
 import { CreatePost } from "~/app/_components/create-post";
 import { getServerAuthSession } from "~/server/auth";
 import { api } from "~/trpc/server";
-import SignUpForm from "../app/_components/form/SignUpForm";
 
 
 export default async function Home() {
@@ -40,7 +39,7 @@ export default async function Home() {
             </div>
           </Link>
         </div>
-        <div>           <SignUpForm/>
+        <div>           
         </div>
         <div className="flex flex-col items-center gap-2">
           <p className="text-2xl text-white">
