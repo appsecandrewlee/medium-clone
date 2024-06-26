@@ -66,10 +66,14 @@ model User {
     posts         Post[]
 }
 
-model Blog {
-    id          String     @id @default(cuid())
-    Text        
 
+//needs to include topics for search engine
+model Blog {
+    id            String     @id @default(cuid())
+    title         String 
+    description   String 
+    image         String?
+    createdDT     DateTime @default(now())
 }
 
 
