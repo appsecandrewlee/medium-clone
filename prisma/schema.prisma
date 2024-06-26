@@ -66,6 +66,15 @@ model User {
     posts         Post[]
 }
 
+model Blog {
+    id          String     @id @default(cuid())
+    Text        
+
+}
+
+
+
+
 model VerificationToken {
     identifier String
     token      String   @unique

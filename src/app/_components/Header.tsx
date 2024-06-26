@@ -33,13 +33,11 @@ export const Header = (props: Props) => {
                             </p>
                         </span>
                     </Link>
-                    <div className="flex items-center">
                     <Link href={'/'}>
                         <span className='flex items-center space-x-2 opacity-70 hover:opacity-100 duration-100 ease-in cursor-pointer'>
                             <Bell size={25}/>
                         </span>
                     </Link>
-                </div>
                 </div>
             </div>
         </div>

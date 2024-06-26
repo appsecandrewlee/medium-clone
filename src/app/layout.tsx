@@ -6,12 +6,14 @@ import { TRPCReactProvider } from "~/trpc/react";
 import { Header } from "./_components/Header";
 
 export const metadata = {
+  
   title: "Medium Clone - Lyra Technologies",
   description: "This is a trial application",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
 export default function RootLayout({
+  
   children,
 }: {
   children: React.ReactNode;
@@ -19,7 +21,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
       <body>
-        <Header/>
         <TRPCReactProvider>{children}</TRPCReactProvider>
       </body>
     </html>
