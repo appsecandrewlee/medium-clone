@@ -2,7 +2,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
-type Props = {}
+//right now there isn't much use for the prop but is also non-null
+//we will change this later 
+type Props = object;
 
 
 export const Header = (props: Props) => {
