@@ -1,9 +1,13 @@
+'use client'
+
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import {Search} from "lucide-react"
 import { SquarePenIcon } from 'lucide-react';
 import { Bell } from 'lucide-react';
+import { useRouter } from 'next/router';
+
 
 //right now there isn't much use for the prop but is also non-null
 //we will change this later 
@@ -25,7 +29,7 @@ export const Header = (props: Props) => {
                     </div>
                 </div>
                 <div className="flex items-center space-x-7">
-                    <Link href={'/'}>
+                    <Link href={'/make-blog'}>
                         <span className='flex items-center space-x-2 opacity-70 hover:opacity-100 duration-100 ease-in cursor-pointer'>
                             <SquarePenIcon size={25}/>
                             <p className='font-light text-sm'>
