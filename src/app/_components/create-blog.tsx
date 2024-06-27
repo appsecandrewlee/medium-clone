@@ -5,7 +5,7 @@ import React, { useRef } from "react";
 import { useRouter } from "next/navigation";
 
 
-type Props = {};
+type Props = object;
 
 
 const CreateBlog = (props: Props) => {
