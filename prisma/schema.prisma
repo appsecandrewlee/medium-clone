@@ -64,6 +64,7 @@ model User {
     accounts      Account[]
     sessions      Session[]
     posts         Post[]
+    blogs         Blog[] 
 }
 
 
@@ -74,6 +75,8 @@ model Blog {
     description   String 
     image         String?
     createdDT     DateTime @default(now())
+    createdBy     User   @relation(fields: [createdById], references: [id])
+    createdById   String
 }
 
 

@@ -4,6 +4,7 @@ import { CreatePost } from "~/app/_components/create-post";
 import { getServerAuthSession } from "~/server/auth";
 import { api } from "~/trpc/server";
 import { Header } from "./_components/Header";
+import { CreateBlog } from "./_components/create-blog";
 
 
 export default async function Home() {
@@ -62,7 +63,7 @@ async function CrudShowcase() {
       ) : (
         <p>You have no posts yet.</p>
       )}
-
+      <CreateBlog/>
       <CreatePost />
     </div>
   );
