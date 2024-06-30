@@ -5,6 +5,10 @@ import React, { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Braces, Code, FileImage, ImageIcon, Images, ImagesIcon, Plus } from "lucide-react";
 import "../../styles/blogs.css";
+import MediumEditor from "medium-editor";
+import 'medium-editor/dist/css/medium-editor.css';
+import 'medium-editor/dist/css/themes/default.css';
+
 
 type Props = object;
 
