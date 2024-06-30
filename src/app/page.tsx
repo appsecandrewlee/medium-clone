@@ -3,7 +3,7 @@ import Link from "next/link";
 import { CreatePost } from "~/app/_components/create-post";
 import { getServerAuthSession } from "~/server/auth";
 import { api } from "~/trpc/server";
-import { Header } from "~/app/_components/header";
+import { HeaderNav } from "~/app/_components/header";
 
 export default async function Home() {
   const hello = await api.post.hello({ text: "from tRPC" });
@@ -11,7 +11,7 @@ export default async function Home() {
 
   return (
     <div>
-    {session && <Header/> }
+    {session && <HeaderNav/> }
     <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#FFFFFF] to-[#15162c] text-white">
 
       <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
