@@ -1,0 +1,10 @@
+h1:empty:not(:focus)::before{
+    content: attr(h1-blog-title);
+    opacity: 30%; 
+}
+
+
+p:empty:not(:focus)::before{
+    content: attr(p-blog-title);
+    opacity: 30%; 
+}

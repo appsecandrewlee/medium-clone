@@ -1,10 +1,10 @@
 "use client";
 
 import { api } from "~/trpc/react";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Braces, Code, FileImage, ImageIcon, Images, ImagesIcon, Plus } from "lucide-react";
-
+import "../../styles/blogs.css";
 
 type Props = object;
 
@@ -12,23 +12,62 @@ type Props = object;
 const CreateBlog = (props: Props) => {
   const RefEdit = useRef<HTMLDivElement | null>(null)
   const [Open, setOpen] = useState<boolean>(false)
+  const [ButtonPos, setButtonPos] = useState<{top:number, left:number}>({top: 0, left: 0})
+
+  const getPosition = () => {
+    let x = 0; 
+    let y = 0; 
+
+    const isSupported = typeof window.getSelection !== 'undefined'
+    
+    if (isSupported){
+      const selection = window.getSelection() as Selection
+
+      if (selection.rangeCount > 0){
+          const check = selection.getRangeAt(0).cloneRange()
+          const rect = check.getClientRects()[0]
+          if(rect){
+            x = rect.left
+            y = rect.top - 40
+
+          }
+      }
+    }
+
+    return {x,y}
+  }
+  
+  useEffect(() => {
+
+    const handleInput = () => {
+    const {y} = getPosition()
+    setButtonPos({top:y, left: -50})
+    }
+    RefEdit.current?.addEventListener('input', handleInput)
+  },[])
 
   return (
     <main id='main-cont' className= 'max-w-[800px] mx-auto relative font-mono mt-5'>
       <div
         id='main-edit'
         ref={RefEdit}
-        className = 'outline-none focus:outline-none main-edit max-w-[800px]'
+        className = 'outline-none focus:outline-none main-edit max-w-[800px] prose'
         contentEditable
         suppressContentEditableWarning
+        style={{whiteSpace:'pre-line'}}
       >
         <div>
-          <div className='z-10' >
+        <h1 className='font-medium' h1-blog-title="Title"></h1>
+          <p p-blog-title="Tell your story..."></p>
+
+        </div>
+        <div>
+          <div className={`z-10 ${ButtonPos.top === 0 ? "hidden":""}`} style={{position: "absolute", top:ButtonPos.top,left:ButtonPos.left}} >
             <button onClick={() => setOpen(!Open)} id='addCircle' className='border-[1px] border-neutral-500 p-1 rounded-full inline-block'>
                 <Plus className={`duration-300 ease-linear ${Open ? "rotate-90":""}`}/>
             </button>
             <div id='tool' className={`flex items-center space-x-4 absolute top-0 left-14 ${Open ? "visible": "invisible"}`}>
-            <span className= {`border-[2px] border-green-500 rounded-full block p-[6px]'${Open? "scale-100 visible":"scale-0 invisible"} ease-linear duration-100 `}>
+            <span className= {`border-[2px] border-green-500 rounded-full block p-[6px]'${Open? "scale-100 visible":"scale-0 invisible"} ease-linear duration-100 delay-100 bg-white`}>
                 <FileImage size={32} className='opacity-60  text-orange-800'>
                   <input 
                   type='file'
@@ -37,12 +76,11 @@ const CreateBlog = (props: Props) => {
                   </input>
                 </FileImage>
               </span>
-              <span className= {`border-[2px] border-green-500 rounded-full block p-[6px]'${Open? "scale-100 visible":"scale-0 invisible"} ease-linear duration-100 `}>
+              <span className= {`border-[2px] border-green-500 rounded-full block p-[6px]'${Open? "scale-100 visible":"scale-0 invisible"} ease-linear duration-100 delay-150 bg-white`}>
                 <Code size={32} className='opacity-60  text-orange-800'>
                 </Code>
-          
               </span>
-              <span className= {`border-[2px] border-green-500 rounded-full block p-[6px]'${Open? "scale-100 visible":"scale-0 invisible"} ease-linear duration-100 `}>
+              <span className= {`border-[2px] border-green-500 rounded-full block p-[6px]'${Open? "scale-100 visible":"scale-0 invisible"} ease-linear duration-100 delay-175 bg-white`}>
               <Braces size={32} className='opacity-60  text-orange-800'>
                 </Braces>
               </span>
