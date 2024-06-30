@@ -6,7 +6,6 @@ import React from 'react';
 import {Search} from "lucide-react"
 import { SquarePenIcon } from 'lucide-react';
 import { Bell } from 'lucide-react';
-import { useRouter } from 'next/router';
 
 
 //right now there isn't much use for the prop but is also non-null
@@ -14,7 +13,7 @@ import { useRouter } from 'next/router';
 type Props = object;
 
 
-const HeaderNav = (props: Props) => {
+const HeaderNav = () => {
     return (
         <div className='px-2 py-1 border-b-[1px]'>
             <div className='flex items-center justify-between'>

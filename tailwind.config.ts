@@ -74,8 +74,8 @@ const config = {
       },
     },
   },
-  plugins: [require('@tailwindcss/typography'),
-    ("tailwindcss-animate")
+  plugins: [require('@tailwindcss/typography')("tailwindcss-animate"),
+   
   ],
 } satisfies Config
 
