@@ -3,16 +3,20 @@
 
 "use client";
 
+import { api } from "~/trpc/react";
 import React, { useEffect, useRef, useState } from "react";
-import { Braces, Code, FileImage, Plus } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { Braces, Code, FileImage, ImageIcon, Images, ImagesIcon, Plus } from "lucide-react";
 import "../../styles/blogs.css";
+import MediumEditor from "medium-editor";
 import 'medium-editor/dist/css/medium-editor.css';
 import 'medium-editor/dist/css/themes/default.css';
 
 
+type Props = object;
 
 
-const CreateBlog = () => {
+const CreateBlog = (props: Props) => {
   const RefEdit = useRef<HTMLDivElement | null>(null)
   const [Open, setOpen] = useState<boolean>(false)
   const [ButtonPos, setButtonPos] = useState<{top:number, left:number}>({top: 0, left: 0})
@@ -23,9 +27,8 @@ const CreateBlog = () => {
 
     const isSupported = typeof window.getSelection !== 'undefined'
     
-
     if (isSupported){
-      const selection = window.getSelection() as Selection;
+      const selection = window.getSelection() as Selection
 
       if (selection.rangeCount > 0){
           const check = selection.getRangeAt(0).cloneRange()
