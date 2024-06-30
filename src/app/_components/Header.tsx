@@ -14,7 +14,7 @@ import { useRouter } from 'next/router';
 type Props = object;
 
 
-export const Header = (props: Props) => {
+const defHeader = (props: Props) => {
     return (
         <div className='px-2 py-1 border-b-[1px]'>
             <div className='flex items-center justify-between'>
@@ -47,3 +47,5 @@ export const Header = (props: Props) => {
         </div>
     )
 }
+
+export default defHeader;
