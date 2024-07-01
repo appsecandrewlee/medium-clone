@@ -6,12 +6,11 @@ import {createRoot} from "react-dom/client";
 import { api } from "~/trpc/react";
 import React, { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Braces, Code, FileImage, ImageIcon, Images, ImagesIcon, Plus, Upload } from "lucide-react";
+import { Braces, Code, FileImage, Plus} from "lucide-react";
 import MediumEditor from "medium-editor";
 import 'medium-editor/dist/css/medium-editor.css';
 import 'medium-editor/dist/css/themes/default.css';
 import "../../styles/blogs.css";
-import { register } from "module";
 
 
 
@@ -21,7 +20,7 @@ type Props = object;
 
 
 const PutImage = ({ImageString, file}: {ImageString: string, file: File}) => {
-  const [currentImageString, setCurrentImageString] = useState<string>(ImageString)
+  const [currentImageString] = useState<string>(ImageString)
   return (
     <div className='py-3'>
       <div>
@@ -264,6 +263,54 @@ export default CreateBlog
 //     </form>
 //   );
 // }
+
+
+
+
+
+  // "use client";
+
+  // import { useRouter } from "next/navigation";
+  // import { useState } from "react";
+
+  // import { api } from "~/trpc/react";
+
+  // export function CreatePost() {
+  //   const router = useRouter();
+  //   const [name, setName] = useState("");
+
+  //   const createPost = api.post.create.useMutation({
+  //     onSuccess: () => {
+  //       router.refresh();
+  //       setName("");
+  //     },
+  //   });
+
+  //   return (
+  //     <form
+  //       onSubmit={(e) => {
+  //         e.preventDefault();
+  //         createPost.mutate({ name });
+  //       }}
+  //       className="flex flex-col gap-2"
+  //     >
+  //       <input
+  //         type="text"
+  //         placeholder="Title"
+  //         value={name}
+  //         onChange={(e) => setName(e.target.value)}
+  //         className="w-full rounded-full px-4 py-2 text-black"
+  //       />
+  //       <button
+  //         type="submit"
+  //         className="rounded-full bg-white/10 px-10 py-3 font-semibold transition hover:bg-white/20"
+  //         disabled={createPost.isPending}
+  //       >
+  //         {createPost.isPending ? "Submitting..." : "Submit"}
+  //       </button>
+  //     </form>
+  //   );
+  // }
 
 ////////////////////////REFERENCE BOILERPLATE ///////////////////////////////////REFERENCE BOILERPLATE ///////////
 
