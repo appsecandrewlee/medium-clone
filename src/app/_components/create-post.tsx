@@ -6,7 +6,7 @@ import {createRoot} from "react-dom/client";
 import { api } from "~/trpc/react";
 import React, { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Braces, Code, FileImage, Plus} from "lucide-react";
+import { Braces, Code, FileImage, MoreHorizontal, Plus} from "lucide-react";
 import MediumEditor from "medium-editor";
 import 'medium-editor/dist/css/medium-editor.css';
 import 'medium-editor/dist/css/themes/default.css';
@@ -48,6 +48,7 @@ const CreatePost = (props: Props) => {
   const [image, setImage] = useState("");
   const [description, setDescription] = useState("");
   const router = useRouter();
+
 
  
   
@@ -93,6 +94,32 @@ const CreatePost = (props: Props) => {
     }
   }
 
+  const SkipLine = () => {
+    return (
+      <div className='py-3 w-full'>
+           <div className='text-center flex items-center justify-center ' contentEditable={false}>
+           <MoreHorizontal size={32}>
+           </MoreHorizontal>
+          </div>
+          <p p-blog-title="Write your text"></p>
+      </div>
+
+    )
+  }
+
+  const SkipLineHandler = () => {
+    const Skipping = <SkipLine/>
+    setOpen(false)
+    const tryWrap = document.createElement('div')
+    const root = createRoot(tryWrap)
+    root.render(Skipping)
+
+    RefEdit.current?.appendChild(tryWrap)
+    
+
+  }
+
+
 
   const getPosition = () => {
     let x = 0; 
@@ -116,6 +143,12 @@ const CreatePost = (props: Props) => {
     return {x,y}
   }
   
+
+
+ 
+
+
+
   useEffect(() => {
 
     const handleInput = () => {
@@ -180,13 +213,13 @@ const CreatePost = (props: Props) => {
                   ref = {inputImage}
                   onChange={ImageHandler}/>        
               </span>
-              <span className= {`border-[2px] border-green-500 rounded-full block p-[6px]'${Open? "scale-100 visible":"scale-0 invisible"} ease-linear duration-100 delay-150 bg-white`}>
-                <Code size={32} className='opacity-60  text-orange-800'>
-                </Code>
+              <span onClick={SkipLineHandler} className= {`border-[2px] border-green-500 rounded-full block p-[6px]'${Open? "scale-100 visible":"scale-0 invisible"} ease-linear duration-100 delay-150 bg-white`}>
+                <MoreHorizontal size={32} className='opacity-60  text-orange-800'>
+                </MoreHorizontal>
               </span>
               <span className= {`border-[2px] border-green-500 rounded-full block p-[6px]'${Open? "scale-100 visible":"scale-0 invisible"} ease-linear duration-100 delay-175 bg-white`}>
-              <Braces size={32} className='opacity-60  text-orange-800'>
-                </Braces>
+              <Code size={32} className='opacity-60  text-orange-800'>
+                </Code>
               </span>
             </div>
           </div>
