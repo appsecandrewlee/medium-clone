@@ -1,5 +1,4 @@
-import CreateBlog from "~/app/_components/create-blog";
-
+import CreateBlog from "~/app/_components/create-post";
 
 
 const page = ({params}: {params: {blogId: string } }) => {
