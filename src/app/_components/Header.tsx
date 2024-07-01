@@ -10,7 +10,6 @@ import { Bell } from 'lucide-react';
 
 //right now there isn't much use for the prop but is also non-null
 //we will change this later 
-type Props = object;
 
 
 const HeaderNav = () => {
@@ -28,7 +27,7 @@ const HeaderNav = () => {
                     </div>
                 </div>
                 <div className="flex items-center space-x-7">
-                    <Link href={'/make-blog'}>
+                    <Link href={'/create-post'}>
                         <span className='flex items-center space-x-2 opacity-70 hover:opacity-100 duration-100 ease-in cursor-pointer'>
                             <SquarePenIcon size={25}/>
                             <p className='font-light text-sm'>
