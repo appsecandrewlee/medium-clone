@@ -8,3 +8,7 @@ p:empty:not(:focus)::before{
     content: attr(p-blog-title);
     opacity: 30%; 
 }
+
+.medium-editor-placeholder:after{
+    content: '' !important; 
+}
