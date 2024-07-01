@@ -36,7 +36,7 @@ const PutImage = ({ImageString, file}: {ImageString: string, file: File}) => {
   )
 }
 
-const CreateBlog = (props: Props) => {
+const CreatePost = (props: Props) => {
 
   //TRPC mutation and upload function 
   const [title, setTitle] = useState("");
@@ -203,7 +203,7 @@ const CreateBlog = (props: Props) => {
     </main>
   )
 }
-export default CreateBlog
+export default CreatePost
 
 
 
@@ -263,6 +263,10 @@ export default CreateBlog
 //     </form>
 //   );
 // }
+
+
+
+
 
 
 
