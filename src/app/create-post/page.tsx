@@ -1,4 +1,5 @@
 import CreateBlog from "~/app/_components/create-post";
+import { getServerAuthSession } from "~/server/auth";
 
 
 const page = ({params}: {params: {blogId: string } }) => {

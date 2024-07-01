@@ -11,6 +11,11 @@ import MediumEditor from "medium-editor";
 import 'medium-editor/dist/css/medium-editor.css';
 import 'medium-editor/dist/css/themes/default.css';
 import "../../styles/blogs.css";
+import NavBar from "./navbar";
+import HeaderNav from "./Header";
+import NavigationBar from "./navbar";
+
+
 
 
 
@@ -142,7 +147,7 @@ const CreatePost = (props: Props) => {
 
   return (
     <main id='main-cont' className='max-w-[800px] mx-auto relative font-mono mt-5'>
-      
+      <NavigationBar/>
       <div
         id='main-edit'
         ref={RefEdit}
